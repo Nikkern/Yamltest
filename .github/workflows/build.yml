@@ -1,0 +1,15 @@
+name: dotnet-build-and-test
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    -uses: Nikkern/Yamltest@v3
+      with:
+        dotnet-version: 8.0.x
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+
